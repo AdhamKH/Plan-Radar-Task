@@ -14,7 +14,7 @@ const Item = memo(({ index }) => (
     className="row"
     key={index}
   >
-    row index {index}
+    Ticket index number {index}
   </div>
 ));
 function App() {
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>Virtual Scroll</h1>
+        <h1>PlanRadar Task for Virtual Scroll </h1>
         {isVisible ? (
           <VirtualScroll
             itemCount={1000000}
