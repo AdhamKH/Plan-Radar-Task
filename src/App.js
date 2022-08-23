@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import VirtualScroll from "./components/VirtualScroll";
+import React, { memo, useState } from "react";
+const Item = memo(({ index }) => (
+  <div
+    style={{
+      height: 30,
+      lineHeight: "30px",
+      display: "flex",
+      justifyContent: "space-between",
+      padding: "0 10px",
+    }}
+    className="row"
+    key={index}
+  >
+    row index {index}
+  </div>
+));
 function App() {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <h1>Virtual Scroll</h1>
+        {isVisible ? (
+          <VirtualScroll
+            itemCount={1000000}
+            height={500}
+            childHeight={30}
+            Item={Item}
+          />
+        ) : null}
+        <hr />
+      </div>
+    </>
   );
 }
-
 export default App;
